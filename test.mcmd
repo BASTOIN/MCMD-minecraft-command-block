@@ -1,0 +1,23 @@
+@init
+R> -I \\ scoreboard objectives add coin dummy ### 코인 오브젝트 추가
+> -C \\ scoreboard players set @a coin 0 ### 모든 플레이어 코인 초기화
+> -C \=\ tellraw @a {"text":"게임 시작!", "color":"gold"}
+
+
+
+R> -R \\ execute as @a at @s if block ~ ~-1 ~ minecraft:gold_block run scoreboard players add @s coin 1 ### 금블록 위면 코인+1
+> -C \=\ execute as @a run title @s actionbar {"text":"코인 획득!", "color":"yellow"}
+> -C \=\ execute as @a run playsound minecraft:entity.experience_orb.pickup master @s
+
+@shop
+R> -I \\ execute as @a at @s if entity @s[nbt={SelectedItem:{id:"minecraft:emerald"}}] run scoreboard players remove @s coin 5 ### 에메랄드로 아이템 구매
+> -C \=\ execute as @a if score @s coin matches ..-1 run tellraw @s {
+    "text":"코인이 부족합니다!",
+    "color":"red"
+} ### ㅁㄴㅇㄻㄴㅇㄹ
+> -C \\ execute as @a if score @s coin matches 0.. run give @s minecraft:golden_apple 1 ### 코인이 충분하면 황금사과 지급
+> -C \=\ execute as @a run tellraw @s {"text":"구매 완료!","color":"green"}
+
+
+
+R> -I \\ execute as @a run say 모든 블록 배치 완료 ### 마지막 확인용 메시지
