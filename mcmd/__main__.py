@@ -19,7 +19,7 @@ def main():
     program = parse_mcmd(text)
     cmds = emit_commands(program, args.facing)
 
-    out_path = src_path.parent / f"out_{src_path.stem}.txt"
+    out_path = src_path.parent / f"out_{src_path.stem}.mcfunction"
     out_path.write_text("\n".join(cmds) + "\n", encoding="utf-8")
     print(f"[OK] {out_path.name} 생성 완료 ({len(cmds)} lines)")
 
