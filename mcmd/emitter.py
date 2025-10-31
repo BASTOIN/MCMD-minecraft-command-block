@@ -36,7 +36,7 @@ def emit_commands(program, facing: str) -> List[str]:
     origin = (0, 0, 0)
 
     for g_idx, group in enumerate(program.groups):
-        group_origin = add(origin, mul(basis.right, g_idx))  # 오른쪽으로 g_idx 만큼
+        group_origin = add(origin, mul(basis.right, g_idx * 2))  # 오른쪽으로 g_idx 만큼
         # '@tag' 마커 소환
         if group.tag:
             # 뒤쪽 = forward의 반대
@@ -85,7 +85,8 @@ def emit_commands(program, facing: str) -> List[str]:
                 out.append(
                     "summon minecraft:text_display "
                     f"{to_rel(comment_pos)} "
-                    "{text:'{\"text\":\"" + comment_text + "\"}',Tags:[\"mcmd\"]}"
+                    #"{text:'{\"text\":\"" + comment_text + "\"}',Tags:[\"mcmd\"]}"
+                    "{text:\"" + comment_text + "\",Tags:[\"mcmd\"],billboard:\"center\"}"
                 )
 
     return out
