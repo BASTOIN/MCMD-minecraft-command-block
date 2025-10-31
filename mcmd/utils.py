@@ -46,8 +46,8 @@ def esc_nbt_string(s: str) -> str:
     - 큰따옴표 -> \\"
     (줄바꿈은 flatten_for_command에서 이미 공백으로 바뀜)
     """
-    s = s.replace("\\", "\\\\")
-    s = s.replace('"', '\\"')
+    s = s.replace("\\", "\\")
+    s = s.replace('"', '\"')
     return s
 
 def normalize_newlines(text: str) -> str:

@@ -10,7 +10,10 @@ R> -R \\ execute as @a at @s if block ~ ~-1 ~ minecraft:gold_block run scoreboar
 > -C \=\ execute as @a run playsound minecraft:entity.experience_orb.pickup master @s
 
 @shop
-R> -I \\ execute as @a at @s if entity @s[nbt={SelectedItem:{id:"minecraft:emerald"}}] run scoreboard players remove @s coin 5 ### 에메랄드로 아이템 구매
+R> -I \\ execute as @a at @s if entity @s
+[nbt={SelectedItem:{id:\"minecraft:emerald\"}}] 
+run scoreboard players remove @s coin 5 ### 에메랄드로 아이템 구매
+
 > -C \=\ execute as @a if score @s coin matches ..-1 run tellraw @s {
     "text":"코인이 부족합니다!",
     "color":"red"
