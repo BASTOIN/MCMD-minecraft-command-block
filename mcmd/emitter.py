@@ -74,7 +74,7 @@ def emit_commands(program, facing: str) -> List[str]:
             cmd_nbt = esc_nbt_string(cmd_flat)
 
             out.append(
-                f"setblock {to_rel(place_pos)} {block_id}[facing={facing_prop},conditional={cond_state}] replace {{Command:\"{cmd_nbt}\",auto:{auto}b,TrackOutput:0b}}"
+                f"setblock {to_rel(place_pos)} {block_id}[facing={facing_prop},conditional={cond_state}]{{Command:\"{cmd_nbt}\",auto:{auto}b,TrackOutput:0b}}"
             )
 
             # 주석 → text_display 소환
